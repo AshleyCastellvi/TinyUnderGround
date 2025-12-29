@@ -1,5 +1,6 @@
-// API Configuration - automatically switches between dev and production
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+// API Configuration - uses relative path in production (same origin)
+const isProduction = !window.location.hostname.includes('localhost');
+const API_URL = isProduction ? '/api' : 'http://localhost:3001/api';
 
 // Helper to get auth headers
 const getAuthHeaders = () => {
@@ -137,7 +138,7 @@ export const tracksAPI = {
         body: JSON.stringify({ content }),
     }),
 
-    getStreamUrl: (id) => `${API_URL.replace('/api', '')}/api/tracks/${id}/stream`,
+    getStreamUrl: (id) => `${isProduction ? '' : 'http://localhost:3001'}/api/tracks/${id}/stream`,
 };
 
 // ============================================
@@ -232,6 +233,5 @@ export const isAuthenticated = () => {
 
 // Get base URL for static files (images, audio)
 export const getStaticUrl = (path) => {
-    const baseUrl = API_URL.replace('/api', '');
-    return `${baseUrl}${path}`;
+    return isProduction ? path : `http://localhost:3001${path}`;
 };

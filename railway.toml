@@ -1,0 +1,10 @@
+[build]
+builder = "NIXPACKS"
+
+[build.env]
+NIXPACKS_BUILD_CMD = "npm install && npm run build && cd server && npm install"
+
+[deploy]
+startCommand = "npm start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10

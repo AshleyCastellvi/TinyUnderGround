@@ -1,73 +1,62 @@
-# TUG - Tiny UnderGround
+# TUG - Tiny UnderGround 🎤
 
 Red social para artistas de rap español.
 
-## 🚀 Inicio Rápido
+## 🚀 Despliegue en Railway (Todo en Uno)
 
-### Frontend (Vite + React)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template)
+
+### Despliegue Automático
+1. Ve a [railway.app](https://railway.app)
+2. "New Project" → "Deploy from GitHub"
+3. Selecciona este repositorio
+4. Añade variable: `JWT_SECRET = tu_clave_secreta`
+5. Click Deploy ¡Listo!
+
+## 💻 Desarrollo Local
+
 ```bash
+# Instalar dependencias
 npm install
-npm run dev
+cd server && npm install && cd ..
+
+# Desarrollo (frontend + backend separados)
+npm run dev          # Frontend en :5173
+npm run dev:server   # Backend en :3001
+
+# Producción local
+npm run build        # Compila frontend
+npm start            # Sirve todo en :3001
 ```
 
-### Backend (Express + SQLite)
-```bash
-cd server
-npm install
-node index.js
-```
-
-## 📁 Estructura del Proyecto
+## 📁 Estructura
 
 ```
-TinyUnderGround/
-├── src/                    # Frontend React
-│   ├── components/         # Componentes reutilizables
-│   ├── pages/              # Páginas de la app
-│   ├── context/            # Context providers
-│   └── services/           # API services
-├── server/                 # Backend Express
-│   ├── config/             # Database config
-│   ├── controllers/        # Route handlers
-│   ├── middleware/         # Auth & upload
-│   ├── routes/             # API routes
-│   └── uploads/            # Audio & images
-└── public/                 # Static assets
+├── src/              # Frontend React
+├── server/           # Backend Express
+│   ├── config/       # Database
+│   ├── controllers/  # API logic
+│   ├── routes/       # Endpoints
+│   └── uploads/      # Audio/images
+├── dist/             # Frontend compilado
+└── railway.toml      # Config despliegue
 ```
 
 ## 🔧 Variables de Entorno
 
-### Frontend (.env)
-```
-VITE_API_URL=http://localhost:3001/api
-```
-
-### Backend (server/.env)
-```
-JWT_SECRET=your_secret_key
-PORT=3001
+```env
+JWT_SECRET=clave_secreta_larga
+PORT=3001 (opcional)
 ```
 
-## 📦 Despliegue
+## ✨ Features
 
-### Frontend (Vercel/Netlify)
-1. Conecta el repositorio
-2. Build command: `npm run build`
-3. Output: `dist`
-4. Configura `VITE_API_URL`
+- 🎵 Upload y streaming de música
+- 👥 Sistema de follows
+- ❤️ Likes y comentarios
+- 🤝 Colaboraciones
+- 💬 Mensajes privados
+- � Notificaciones
 
-### Backend (Railway)
-1. Conecta el repositorio
-2. Root: `/server`
-3. Start: `npm start`
-4. Configura `JWT_SECRET`
-
-## 🎨 Stack
-
-- **Frontend**: Vite, React, Framer Motion, React Router
-- **Backend**: Express, SQLite, JWT, Multer
-- **Estilos**: CSS con variables, Glassmorphism
-
-## 📄 Licencia
-
-MIT - Creado para la comunidad del rap español 🎤
+---
+Creado para la comunidad del rap español 🎤
